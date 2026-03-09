@@ -52,3 +52,52 @@ tabButtons.forEach((btn) => {
     });
   });
 });
+document.querySelectorAll('.slider').forEach((slider) => {
+  const slides = slider.querySelectorAll('.slide');
+  const dots = slider.querySelectorAll('.dot');
+  const next = slider.querySelector('.next');
+  const prev = slider.querySelector('.prev');
+
+  let index = 0;
+  let startX = 0;
+  let endX = 0;
+
+  function showSlide(i) {
+    if (i >= slides.length) index = 0;
+    if (i < 0) index = slides.length - 1;
+
+    slides.forEach((slide) => slide.classList.remove('active'));
+    dots.forEach((dot) => dot.classList.remove('active'));
+
+    slides[index].classList.add('active');
+    if (dots[index]) dots[index].classList.add('active');
+  }
+
+  next.addEventListener('click', () => {
+    index++;
+    showSlide(index);
+  });
+
+  prev.addEventListener('click', () => {
+    index--;
+    showSlide(index);
+  });
+
+  slider.addEventListener('touchstart', (e) => {
+    startX = e.changedTouches[0].clientX;
+  });
+
+  slider.addEventListener('touchend', (e) => {
+    endX = e.changedTouches[0].clientX;
+    const diff = startX - endX;
+
+    if (Math.abs(diff) > 40) {
+      if (diff > 0) {
+        index++;
+      } else {
+        index--;
+      }
+      showSlide(index);
+    }
+  });
+});

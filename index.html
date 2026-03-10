@@ -256,5 +256,22 @@
   </div>
 
   <script src="app.js"></script>
+  <div class="gallery-modal" id="galleryModal" aria-hidden="true">
+  <div class="gallery-dialog">
+    <button class="gallery-close" id="galleryClose" aria-label="Закрыть галерею">×</button>
+
+    <div class="gallery-stage">
+      <button class="gallery-nav prev" id="galleryPrev" aria-label="Предыдущее фото">‹</button>
+
+      <img id="galleryMainImage" class="gallery-main-image" src="" alt="Фото изделия" />
+
+      <button class="gallery-nav next" id="galleryNext" aria-label="Следующее фото">›</button>
+    </div>
+
+    <div class="gallery-caption" id="galleryCaption"></div>
+
+    <div class="gallery-thumbs" id="galleryThumbs"></div>
+  </div>
+</div>
 </body>
 </html>
